@@ -9,6 +9,8 @@ navbar:
       href: Methodology.html
     - text: "Findings"
       href: Findings.html
+    - text: "Twitter data cleaning"
+      href: Twitter data cleaning.html
       
 output:
   html_document:
