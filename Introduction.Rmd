@@ -1,5 +1,8 @@
 ---
 title: "Introduction"
+subtitle: "Homework 09"
+author: "Jenifer M. Nemoda"
+date: "04/29/2021"
 output: html_document
 ---
 
