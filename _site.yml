@@ -1,3 +1,16 @@
----
-title: Test site
----
+name: "Jenifer Nemoda's Website"
+output_dir: "."
+navbar:
+  title: "Jenifer Nemoda"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Project"
+      href: project.html
+    - text: "About"
+      href: about.html
+      
+output:
+  html_document:
+    theme: simplex
+    highlight: textmate
