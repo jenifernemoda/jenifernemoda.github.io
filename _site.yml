@@ -3,12 +3,12 @@ output_dir: "."
 navbar:
   title: "Jenifer Nemoda"
   left:
-    - text: "Home"
-      href: index.html
-    - text: "Project"
-      href: project.html
-    - text: "About"
-      href: about.html
+    - text: "Introduction"
+      href: Introduction.html
+    - text: "Methodology"
+      href: Methodology.html
+    - text: "Findings"
+      href: Findings.html
       
 output:
   html_document:
