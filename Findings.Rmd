@@ -5,4 +5,30 @@ author: "Jenifer M. Nemoda"
 date: "04/29/2021"
 output: html_document
 ---
+\ \
+
+#### *The code alongside with the Confusion Matrices and graphs can be found in Computation (ii)*
+
+\ \
+*Findings of the predictive algorithm*
+
+* To assess our model, we test it with data that was not included to train the algorithm. We then compute a number of Confusion Matrices and test it with new tweets from the two users as well with tweets from unrelated users.
+* Based on the Confusion Matrices and our manual tests, we find that -about 70% of the times- the algorithm is able to accurately predict whether a given was more likely tweeted by Boris Johnson or Alexandria Ocasio-Cortez.
+* Furthermore, the Confusion Matrices show that the algorithm is better at predicting tweets by Boris Johnson compared to those by Alexandria Ocasio-Cortez We see that the model has a better accuracy for predicting Boris Johnson's tweets than Alexandria Ocasio-Cortez's tweets, which might be attributed to Alexandria Ocasio-Cortez's vaster vocabulary, or her intend to tweet about numerous topics, which has a subset of topics that are commonly present within Boris Johnson's tweets as well.
+* In general, we find that our algorithm is able to predict whether a given tweet was more likely tweeted by Boris Johnson or AOC with an accuracy of about 70%. This accuracy also achievable while testing the model manually. We observe that testing 10 tweets (5 by BJ and 5 by AOC) yields a proper prediction 7 times out of 10.
+* When we tested tweets from unrelated users, we found that the model behaves as expected. Because Alexandria Ocasio-Cortez uses a wider spectrum of words, many of the tweets were attributed to her by the algorithm. Even tweets containing a content, which would normally be associated with Boris Johnson were attributed to AOC. In this sense, the model "breaks" when we test it with tweets by unrelated users.
+* As for the most used words by each politician, both of them commonly commented on a key international issue, as “COVID” was one of the most used words in tweets from Alexandria Ocasio-Cortez and “pandemic” was one of Boris Johnson’s most used words. However, there were also considerable differences which allowed our algorithm to predict which user a given tweet came from. For instance, as Boris Johnson is the prime minister of the United Kingdom, one of the most common words in his tweets is UK. Almost certainly, if a tweet contains the world “UK“, it was issued by Boris Johnson. 
+
+\ \
+*Conclusion*
+
+###### *In conclusion, we find that our algorithm is able to predict whether a given tweet was more likely tweeted by Boris Johnson or AOC with an accuracy of about 70%. This is both consistent with the results from the Confusion Matrices and with our manual test.*
+
+\ \
+*Acknowledgements*
+
+* This work has been done as part of a class project and it is the result of teamwork by Nicolle Belaunde, Valentina Cafarelli, Jenifer M. Nemoda, Samira Okudo, and Jonathan Zur. 
+* Our predictive algorithm is adapted from one of the models we used in class (Lecture 12).
+
+
 

@@ -313,7 +313,38 @@ $(document).ready(function () {
 </div>
 
 
-
+<p> <br />
+</p>
+<div id="two-main-steps-taken-to-develop-the-predictive-algorithm-i-a-first-step-in-r-to-get-twitter-data-from-our-selected-users-boris-johnson-and-aoc-and-ii-a-second-step-in-python-to-create-the-predictive-algorithm." class="section level4">
+<h4><em>Two main steps taken to develop the predictive algorithm: (i) a first step in R to get twitter data from our selected users (Boris Johnson and AOC) and (ii) a second step in Python to create the predictive algorithm.</em></h4>
+<p> <br />
+<em>(i) Downloading Twitter data in R</em></p>
+<ul>
+<li>First, we download 3,200 tweets by Boris Johnson and AOC respectively.</li>
+<li>Second, we then exclude retweets, keep only the variables that we are interested in using to develop our predictive algorithm and select a sample of 200 tweets per user.</li>
+<li>Third, We merge these two clean datasets into one in order to create an input file that can be used as an input for our algorithm (see ii).</li>
+</ul>
+<p> <br />
+<em>Additional methodological notes on step (i)</em></p>
+<ul>
+<li><strong>Excluding retweets:</strong> we decided to exclude retweets since these are statements made by third parties that are only re-posted by our users. We wanted to base our predictive algorithm solely on tweets directly posted by our users instead.</li>
+<li><strong>Excluding non-relevant variables:</strong> our analysis is based solely on the text of the tweets. Thus, we remove all other variables that are included in datasets downloaded from Twitter.</li>
+<li><strong>Selecting a sample of 200 users:</strong> we selected a sample of 200 tweets to ensure the proper functioning of our Python algorithm.</li>
+</ul>
+<p> <br />
+</p>
+<div id="the-output-from-this-step-is-a-.csv-file-including-400-tweets-200-tweets-per-selected-user.-as-for-the-variables-the-file-includes-author-as-the-author-of-the-tweet-namely-boris-johnson-or-aoc-status-as-the-text-of-the-tweet-itself-and-id-as-the-counting-of-the-rows." class="section level6">
+<h6><em>The output from this step is a .csv file including 400 tweets (200 tweets per selected user). As for the variables, the file includes “author” as the author of the tweet, namely Boris Johnson or AOC; “status” as the text of the tweet itself; and “id” as the counting of the rows.</em></h6>
+<p> <br />
+<em>(ii) Creating Algorithm in Python</em></p>
+<ul>
+<li>We adapt a model used in class to develop an algorithm that allows us to predict whether the author of a given tweet was either Boris Johnson or AOC.</li>
+<li>The model takes our output from step (i) as an input. The code then splits the data into training and test data, and creates vectorized representations of the tweets that are subsequently used to train and test the model.</li>
+<li>We then compute a few Confusion Matrices. This will allow us to assess our model later on (see findings). We also visualize the most used words within the analyzed tweets.</li>
+<li>Finally, the last two chunks of code allow us not only to test manually whether a tweet belongs to Boris Johnson or Alexandria Ocasio-Cortez, but also to investigate what happens when we test tweets from unrelated users.</li>
+</ul>
+</div>
+</div>
 
 
 

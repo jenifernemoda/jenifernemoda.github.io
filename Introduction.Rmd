@@ -7,7 +7,7 @@ output: html_document
 ---
 \ \
 
-## *Research question: How will the Twitter behavior of Boris Johnson and Alexandria Ocasio-Cortez compare and contrast?*
+#### *Research question: How will the Twitter behavior of Boris Johnson and Alexandria Ocasio-Cortez compare and contrast?*
 
 \ \
 
