@@ -1,7 +1,7 @@
 name: "Jenifer M. Nemoda's Website"
 output_dir: "."
 navbar:
-  title: "Jenifer Nemoda"
+  title: "Jenifer M. Nemoda"
   left:
     - text: "Introduction"
       href: Introduction.html
