@@ -11,6 +11,8 @@ navbar:
       href: Findings.html
     - text: "Twitter data cleaning"
       href: Twitter data cleaning.html
+    - text: "Predictive Algorithm"
+      href: Predictive algorithm.html
       
 output:
   html_document:
