@@ -11,8 +11,8 @@ navbar:
       href: Findings.html
     - text: "Data"
       href: Data.html
-    - text: "Predictive"
-      href: Predictive.html
+    - text: "Algorithm"
+      href: Algorithm.html
       
 output:
   html_document:

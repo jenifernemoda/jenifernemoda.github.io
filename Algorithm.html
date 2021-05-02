@@ -319,7 +319,131 @@ $(document).ready(function () {
 </div>
 
 
+<pre class="python"><code># Set seed for reproducibility
+import random; random.seed(53)
 
+# Import all we need from sklearn
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.svm import LinearSVC
+from sklearn import metrics</code></pre>
+<pre class="python"><code>import pandas as pd
+
+# Load data
+tweet_df = pd.read_csv(&#39;tweets_hw9_tidy.csv&#39;)
+
+# Create target
+y = tweet_df.author
+
+# Split training and testing data
+X_train, X_test, y_train, y_test = train_test_split(tweet_df[&#39;status&#39;], y, test_size=0.33, 
+                 random_state=53)</code></pre>
+<pre class="python"><code># Initialize count vectorizer
+count_vectorizer = CountVectorizer(stop_words=&#39;english&#39;, 
+                                   min_df=0.05, max_df=0.9)
+
+# Create count train and test variables
+count_train = count_vectorizer.fit_transform(X_train)
+count_test = count_vectorizer.transform(X_test)
+
+# Initialize tfidf vectorizer
+tfidf_vectorizer = TfidfVectorizer(stop_words=&#39;english&#39;, 
+                                   min_df=0.05, max_df=0.9)
+
+# Create tfidf train and test variables
+tfidf_train = tfidf_vectorizer.fit_transform(X_train)
+tfidf_test = tfidf_vectorizer.transform(X_test)</code></pre>
+<pre class="python"><code>tfidf_nb = MultinomialNB()
+tfidf_nb.fit(tfidf_train, y_train)</code></pre>
+<pre><code>## MultinomialNB()</code></pre>
+<pre class="python"><code>tfidf_nb_pred = tfidf_nb.predict(tfidf_test)
+tfidf_nb_score = metrics.accuracy_score(y_test, tfidf_nb_pred)
+
+count_nb = MultinomialNB()
+count_nb.fit(count_train, y_train)</code></pre>
+<pre><code>## MultinomialNB()</code></pre>
+<pre class="python"><code>count_nb_pred = count_nb.predict(count_test)
+count_nb_score = metrics.accuracy_score(y_test, count_nb_pred)
+
+print(&#39;NaiveBayes Tfidf Score: &#39;, tfidf_nb_score)</code></pre>
+<pre><code>## NaiveBayes Tfidf Score:  0.5909090909090909</code></pre>
+<pre class="python"><code>print(&#39;NaiveBayes Count Score: &#39;, count_nb_score)</code></pre>
+<pre><code>## NaiveBayes Count Score:  0.6136363636363636</code></pre>
+<pre class="python"><code>from helper_functions import plot_confusion_matrix
+
+
+tfidf_nb_cm = metrics.confusion_matrix(y_test, tfidf_nb_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
+count_nb_cm = metrics.confusion_matrix(y_test, count_nb_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
+
+plot_1 = plot_confusion_matrix(tfidf_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF NB Confusion Matrix&quot;)</code></pre>
+<pre><code>## Confusion matrix, without normalization</code></pre>
+<pre class="python"><code>plot_2 = plot_confusion_matrix(count_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;Count NB Confusion Matrix&quot;, figure=1)</code></pre>
+<pre><code>## Confusion matrix, without normalization</code></pre>
+<pre class="python"><code>tfidf_svc = LinearSVC()
+tfidf_svc.fit(tfidf_train, y_train)</code></pre>
+<pre><code>## LinearSVC()</code></pre>
+<pre class="python"><code>tfidf_svc_pred = tfidf_svc.predict(tfidf_test)
+tfidf_svc_score = metrics.accuracy_score(y_test, tfidf_svc_pred)
+
+print(&quot;LinearSVC Score:   %0.3f&quot; % tfidf_svc_score)</code></pre>
+<pre><code>## LinearSVC Score:   0.689</code></pre>
+<pre class="python"><code>svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
+plot_3 = plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
+<pre><code>## Confusion matrix, without normalization</code></pre>
+<pre class="python"><code>from helper_functions import plot_and_return_top_features
+from pprint import pprint
+
+top_features = plot_and_return_top_features(tfidf_svc, tfidf_vectorizer)</code></pre>
+<p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-1.png" width="1440" /></p>
+<pre class="python"><code>pprint(top_features)</code></pre>
+<pre><code>## [(-1.5608600699668638, &#39;amp&#39;),
+##  (-1.4735127115604527, &#39;just&#39;),
+##  (-0.31189920387563, &#39;need&#39;),
+##  (-0.05306355207711965, &#39;thank&#39;),
+##  (-0.021132443124156505, &#39;work&#39;),
+##  (-0.016289778838484877, &#39;covid&#39;),
+##  (0.045572408017541664, &#39;ve&#39;),
+##  (0.11561914546963538, &#39;people&#39;),
+##  (0.12439071943340646, &#39;new&#39;),
+##  (0.3927766795258272, &#39;make&#39;),
+##  (0.5396499380864919, &#39;https&#39;),
+##  (0.6792996137915543, &#39;country&#39;),
+##  (0.7165093809378172, &#39;million&#39;),
+##  (0.8990615766952018, &#39;today&#39;),
+##  (1.0701274714130355, &#39;vaccine&#39;),
+##  (1.3567504660391363, &#39;uk&#39;),
+##  (1.4169996375143648, &#39;jab&#39;),
+##  (1.5002671321798913, &#39;great&#39;)]</code></pre>
+<pre class="python"><code>bj_tweet = &quot;Herd immunity will save us&quot; 
+aoc_tweet = &quot;AstraZeneca sucks&quot; 
+
+bj_tweet_vectorized = tfidf_vectorizer.transform([bj_tweet])
+aoc_tweet_vectorized = tfidf_vectorizer.transform([aoc_tweet])
+
+bj_tweet_pred = tfidf_svc.predict(bj_tweet_vectorized)
+aoc_tweet_pred = tfidf_svc.predict(aoc_tweet_vectorized)
+
+print(&quot;Predicted Boris Johnson tweet&quot;, bj_tweet_pred)</code></pre>
+<pre><code>## Predicted Boris Johnson tweet [&#39;AOC&#39;]</code></pre>
+<pre class="python"><code>print(&quot;Predicted AOC tweet&quot;, aoc_tweet_pred)
+
+
+#BJ Tweets
+#The UK is a great country
+#The Duke lives in our hearts 
+#Everyone is eligible for a vaccine
+
+#AOC Tweets
+#Climate Change is an issue 
+#God save the Queen
+#Gender gap is real
+#Happy Mothers day
+#Happy Fathers day
+#Pfizer is the best
+#Minimum wage is a priority
+#AstraZeneca is safe</code></pre>
+<pre><code>## Predicted AOC tweet [&#39;AOC&#39;]</code></pre>
 
 
 
