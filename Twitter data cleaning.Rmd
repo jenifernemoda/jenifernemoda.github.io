@@ -43,9 +43,10 @@ aoc %>%  filter(is_retweet=="FALSE") %>%
   head(200) -> aoc2
 
 #creating one file with tweets from both people
-tweets_hw9 <- union(bj2,aoc2)
+tweets_hw9 <- bind_rows(bj2,aoc2)
 
-tweets_hw9 %>% mutate(id = row_number()) %>% rename(author = screen_name, status = text) -> tweets_hw9_v0.2
+tweets_hw9 %>% mutate(id = row_number()) %>% 
+  rename("author" = "screen_name", "status" = "text") -> tweets_hw9_v0.2
 
 #write.csv(tweets_hw9_tidy, "~/V/penn/Spring2021/516/")
 write.csv(tweets_hw9_v0.2, file = "tweets_hw9_tidy.csv")
