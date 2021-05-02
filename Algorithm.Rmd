@@ -101,8 +101,8 @@ tfidf_svc_score = metrics.accuracy_score(y_test, tfidf_svc_pred)
 print("LinearSVC Score:   %0.3f" % tfidf_svc_score)
 
 svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=['BorisJohnson', 'AOC'])
-plot_confusion_matrix(svc_cm, classes=['BorisJohnson', 'AOC'], title="TF-IDF LinearSVC Confusion Matrix")
-plt.show
+cm = plot_confusion_matrix(svc_cm, classes=['BorisJohnson', 'AOC'], title="TF-IDF LinearSVC Confusion Matrix")
+plt.show(cm)
 ```
 
 
