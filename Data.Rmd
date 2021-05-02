@@ -7,7 +7,7 @@ output: html_document
 ---
 
 
-```{r setup, include=FALSE}
+```{r}
 #recovering tweets from our chosen people: Boris Johnson and AOC
 library(rtweet)
 
@@ -28,7 +28,7 @@ aoc <- get_timeline("aoc", n=3200)
 ```
 
 
-```{r pressure, echo=FALSE}
+```{r}
 library(dplyr)
 
 #selecting only relevant variables ('select')
