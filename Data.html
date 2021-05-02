@@ -331,47 +331,41 @@ usr_df &lt;- lookup_users(users)
 ## view users data
 usr_df</code></pre>
 <pre><code>## # A tibble: 2 x 90
-##   user_id status_id created_at          screen_name text  source display_text_wi… reply_to_status… reply_to_user_id
-##   &lt;chr&gt;   &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;             &lt;int&gt; &lt;lgl&gt;            &lt;lgl&gt;           
-## 1 313114… 13888797… 2021-05-02 15:35:19 BorisJohns… &quot;15 … Twitt…               NA NA               NA              
-## 2 138203… 13875899… 2021-04-29 02:10:10 AOC         &quot;Not… Twitt…               NA NA               NA              
-## # … with 81 more variables: reply_to_screen_name &lt;lgl&gt;, is_quote &lt;lgl&gt;, is_retweet &lt;lgl&gt;, favorite_count &lt;int&gt;,
-## #   retweet_count &lt;int&gt;, quote_count &lt;int&gt;, reply_count &lt;int&gt;, hashtags &lt;list&gt;, symbols &lt;list&gt;, urls_url &lt;list&gt;,
-## #   urls_t.co &lt;list&gt;, urls_expanded_url &lt;list&gt;, media_url &lt;list&gt;, media_t.co &lt;list&gt;, media_expanded_url &lt;list&gt;,
-## #   media_type &lt;list&gt;, ext_media_url &lt;list&gt;, ext_media_t.co &lt;list&gt;, ext_media_expanded_url &lt;list&gt;, ext_media_type &lt;chr&gt;,
-## #   mentions_user_id &lt;list&gt;, mentions_screen_name &lt;list&gt;, lang &lt;chr&gt;, quoted_status_id &lt;chr&gt;, quoted_text &lt;chr&gt;,
-## #   quoted_created_at &lt;dttm&gt;, quoted_source &lt;chr&gt;, quoted_favorite_count &lt;int&gt;, quoted_retweet_count &lt;int&gt;,
-## #   quoted_user_id &lt;chr&gt;, quoted_screen_name &lt;chr&gt;, quoted_name &lt;chr&gt;, quoted_followers_count &lt;int&gt;,
-## #   quoted_friends_count &lt;int&gt;, quoted_statuses_count &lt;int&gt;, quoted_location &lt;chr&gt;, quoted_description &lt;chr&gt;,
-## #   quoted_verified &lt;lgl&gt;, retweet_status_id &lt;chr&gt;, retweet_text &lt;chr&gt;, retweet_created_at &lt;dttm&gt;, retweet_source &lt;chr&gt;,
-## #   retweet_favorite_count &lt;int&gt;, retweet_retweet_count &lt;int&gt;, retweet_user_id &lt;chr&gt;, retweet_screen_name &lt;chr&gt;,
-## #   retweet_name &lt;chr&gt;, retweet_followers_count &lt;int&gt;, retweet_friends_count &lt;int&gt;, retweet_statuses_count &lt;int&gt;,
-## #   retweet_location &lt;chr&gt;, retweet_description &lt;chr&gt;, retweet_verified &lt;lgl&gt;, place_url &lt;chr&gt;, place_name &lt;chr&gt;,
-## #   place_full_name &lt;chr&gt;, place_type &lt;chr&gt;, country &lt;chr&gt;, country_code &lt;chr&gt;, geo_coords &lt;list&gt;, coords_coords &lt;list&gt;,
-## #   bbox_coords &lt;list&gt;, status_url &lt;chr&gt;, name &lt;chr&gt;, location &lt;chr&gt;, description &lt;chr&gt;, url &lt;chr&gt;, protected &lt;lgl&gt;,
-## #   followers_count &lt;int&gt;, friends_count &lt;int&gt;, listed_count &lt;int&gt;, statuses_count &lt;int&gt;, favourites_count &lt;int&gt;,
-## #   account_created_at &lt;dttm&gt;, verified &lt;lgl&gt;, profile_url &lt;chr&gt;, profile_expanded_url &lt;chr&gt;, account_lang &lt;lgl&gt;,
-## #   profile_banner_url &lt;chr&gt;, profile_background_url &lt;chr&gt;, profile_image_url &lt;chr&gt;</code></pre>
+##   user_id status_id created_at          screen_name text  source display_text_wi… reply_to_status… reply_to_user_id reply_to_screen… is_quote is_retweet
+##   &lt;chr&gt;   &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;             &lt;int&gt; &lt;lgl&gt;            &lt;lgl&gt;            &lt;lgl&gt;            &lt;lgl&gt;    &lt;lgl&gt;     
+## 1 313114… 13889385… 2021-05-02 19:28:42 BorisJohns… I am… Twitt…               NA NA               NA               NA               FALSE    FALSE     
+## 2 138203… 13875899… 2021-04-29 02:10:10 AOC         Not … Twitt…               NA NA               NA               NA               FALSE    FALSE     
+## # … with 78 more variables: favorite_count &lt;int&gt;, retweet_count &lt;int&gt;, quote_count &lt;int&gt;, reply_count &lt;int&gt;, hashtags &lt;list&gt;, symbols &lt;list&gt;,
+## #   urls_url &lt;list&gt;, urls_t.co &lt;list&gt;, urls_expanded_url &lt;list&gt;, media_url &lt;list&gt;, media_t.co &lt;list&gt;, media_expanded_url &lt;list&gt;, media_type &lt;list&gt;,
+## #   ext_media_url &lt;list&gt;, ext_media_t.co &lt;list&gt;, ext_media_expanded_url &lt;list&gt;, ext_media_type &lt;chr&gt;, mentions_user_id &lt;list&gt;,
+## #   mentions_screen_name &lt;list&gt;, lang &lt;chr&gt;, quoted_status_id &lt;chr&gt;, quoted_text &lt;chr&gt;, quoted_created_at &lt;dttm&gt;, quoted_source &lt;chr&gt;,
+## #   quoted_favorite_count &lt;int&gt;, quoted_retweet_count &lt;int&gt;, quoted_user_id &lt;chr&gt;, quoted_screen_name &lt;chr&gt;, quoted_name &lt;chr&gt;,
+## #   quoted_followers_count &lt;int&gt;, quoted_friends_count &lt;int&gt;, quoted_statuses_count &lt;int&gt;, quoted_location &lt;chr&gt;, quoted_description &lt;chr&gt;,
+## #   quoted_verified &lt;lgl&gt;, retweet_status_id &lt;chr&gt;, retweet_text &lt;chr&gt;, retweet_created_at &lt;dttm&gt;, retweet_source &lt;chr&gt;, retweet_favorite_count &lt;int&gt;,
+## #   retweet_retweet_count &lt;int&gt;, retweet_user_id &lt;chr&gt;, retweet_screen_name &lt;chr&gt;, retweet_name &lt;chr&gt;, retweet_followers_count &lt;int&gt;,
+## #   retweet_friends_count &lt;int&gt;, retweet_statuses_count &lt;int&gt;, retweet_location &lt;chr&gt;, retweet_description &lt;chr&gt;, retweet_verified &lt;lgl&gt;,
+## #   place_url &lt;chr&gt;, place_name &lt;chr&gt;, place_full_name &lt;chr&gt;, place_type &lt;chr&gt;, country &lt;chr&gt;, country_code &lt;chr&gt;, geo_coords &lt;list&gt;,
+## #   coords_coords &lt;list&gt;, bbox_coords &lt;list&gt;, status_url &lt;chr&gt;, name &lt;chr&gt;, location &lt;chr&gt;, description &lt;chr&gt;, url &lt;chr&gt;, protected &lt;lgl&gt;,
+## #   followers_count &lt;int&gt;, friends_count &lt;int&gt;, listed_count &lt;int&gt;, statuses_count &lt;int&gt;, favourites_count &lt;int&gt;, account_created_at &lt;dttm&gt;,
+## #   verified &lt;lgl&gt;, profile_url &lt;chr&gt;, profile_expanded_url &lt;chr&gt;, account_lang &lt;lgl&gt;, profile_banner_url &lt;chr&gt;, profile_background_url &lt;chr&gt;,
+## #   profile_image_url &lt;chr&gt;</code></pre>
 <pre class="r"><code>## view tweet data for these users via tweets_data()
 tweets_data(usr_df)</code></pre>
 <pre><code>## # A tibble: 2 x 68
-##   user_id status_id created_at          screen_name text  source display_text_wi… reply_to_status… reply_to_user_id
-##   &lt;chr&gt;   &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;             &lt;int&gt; &lt;lgl&gt;            &lt;lgl&gt;           
-## 1 313114… 13888797… 2021-05-02 15:35:19 BorisJohns… &quot;15 … Twitt…               NA NA               NA              
-## 2 138203… 13875899… 2021-04-29 02:10:10 AOC         &quot;Not… Twitt…               NA NA               NA              
-## # … with 59 more variables: reply_to_screen_name &lt;lgl&gt;, is_quote &lt;lgl&gt;, is_retweet &lt;lgl&gt;, favorite_count &lt;int&gt;,
-## #   retweet_count &lt;int&gt;, hashtags &lt;list&gt;, symbols &lt;list&gt;, urls_url &lt;list&gt;, urls_t.co &lt;list&gt;, urls_expanded_url &lt;list&gt;,
-## #   media_url &lt;list&gt;, media_t.co &lt;list&gt;, media_expanded_url &lt;list&gt;, media_type &lt;list&gt;, ext_media_url &lt;list&gt;,
-## #   ext_media_t.co &lt;list&gt;, ext_media_expanded_url &lt;list&gt;, ext_media_type &lt;chr&gt;, mentions_user_id &lt;list&gt;,
-## #   mentions_screen_name &lt;list&gt;, lang &lt;chr&gt;, quoted_status_id &lt;chr&gt;, quoted_text &lt;chr&gt;, quoted_created_at &lt;dttm&gt;,
-## #   quoted_source &lt;chr&gt;, quoted_favorite_count &lt;int&gt;, quoted_retweet_count &lt;int&gt;, quoted_user_id &lt;chr&gt;,
-## #   quoted_screen_name &lt;chr&gt;, quoted_name &lt;chr&gt;, quoted_followers_count &lt;int&gt;, quoted_friends_count &lt;int&gt;,
-## #   quoted_statuses_count &lt;int&gt;, quoted_location &lt;chr&gt;, quoted_description &lt;chr&gt;, quoted_verified &lt;lgl&gt;,
-## #   retweet_status_id &lt;chr&gt;, retweet_text &lt;chr&gt;, retweet_created_at &lt;dttm&gt;, retweet_source &lt;chr&gt;,
-## #   retweet_favorite_count &lt;int&gt;, retweet_user_id &lt;chr&gt;, retweet_screen_name &lt;chr&gt;, retweet_name &lt;chr&gt;,
-## #   retweet_followers_count &lt;int&gt;, retweet_friends_count &lt;int&gt;, retweet_statuses_count &lt;int&gt;, retweet_location &lt;chr&gt;,
-## #   retweet_description &lt;chr&gt;, retweet_verified &lt;lgl&gt;, place_url &lt;chr&gt;, place_name &lt;chr&gt;, place_full_name &lt;chr&gt;,
-## #   place_type &lt;chr&gt;, country &lt;chr&gt;, country_code &lt;chr&gt;, geo_coords &lt;list&gt;, coords_coords &lt;list&gt;, bbox_coords &lt;list&gt;</code></pre>
+##   user_id status_id created_at          screen_name text  source display_text_wi… reply_to_status… reply_to_user_id reply_to_screen… is_quote is_retweet
+##   &lt;chr&gt;   &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;             &lt;int&gt; &lt;lgl&gt;            &lt;lgl&gt;            &lt;lgl&gt;            &lt;lgl&gt;    &lt;lgl&gt;     
+## 1 313114… 13889385… 2021-05-02 19:28:42 BorisJohns… I am… Twitt…               NA NA               NA               NA               FALSE    FALSE     
+## 2 138203… 13875899… 2021-04-29 02:10:10 AOC         Not … Twitt…               NA NA               NA               NA               FALSE    FALSE     
+## # … with 56 more variables: favorite_count &lt;int&gt;, retweet_count &lt;int&gt;, hashtags &lt;list&gt;, symbols &lt;list&gt;, urls_url &lt;list&gt;, urls_t.co &lt;list&gt;,
+## #   urls_expanded_url &lt;list&gt;, media_url &lt;list&gt;, media_t.co &lt;list&gt;, media_expanded_url &lt;list&gt;, media_type &lt;list&gt;, ext_media_url &lt;list&gt;,
+## #   ext_media_t.co &lt;list&gt;, ext_media_expanded_url &lt;list&gt;, ext_media_type &lt;chr&gt;, mentions_user_id &lt;list&gt;, mentions_screen_name &lt;list&gt;, lang &lt;chr&gt;,
+## #   quoted_status_id &lt;chr&gt;, quoted_text &lt;chr&gt;, quoted_created_at &lt;dttm&gt;, quoted_source &lt;chr&gt;, quoted_favorite_count &lt;int&gt;, quoted_retweet_count &lt;int&gt;,
+## #   quoted_user_id &lt;chr&gt;, quoted_screen_name &lt;chr&gt;, quoted_name &lt;chr&gt;, quoted_followers_count &lt;int&gt;, quoted_friends_count &lt;int&gt;,
+## #   quoted_statuses_count &lt;int&gt;, quoted_location &lt;chr&gt;, quoted_description &lt;chr&gt;, quoted_verified &lt;lgl&gt;, retweet_status_id &lt;chr&gt;, retweet_text &lt;chr&gt;,
+## #   retweet_created_at &lt;dttm&gt;, retweet_source &lt;chr&gt;, retweet_favorite_count &lt;int&gt;, retweet_user_id &lt;chr&gt;, retweet_screen_name &lt;chr&gt;, retweet_name &lt;chr&gt;,
+## #   retweet_followers_count &lt;int&gt;, retweet_friends_count &lt;int&gt;, retweet_statuses_count &lt;int&gt;, retweet_location &lt;chr&gt;, retweet_description &lt;chr&gt;,
+## #   retweet_verified &lt;lgl&gt;, place_url &lt;chr&gt;, place_name &lt;chr&gt;, place_full_name &lt;chr&gt;, place_type &lt;chr&gt;, country &lt;chr&gt;, country_code &lt;chr&gt;,
+## #   geo_coords &lt;list&gt;, coords_coords &lt;list&gt;, bbox_coords &lt;list&gt;</code></pre>
 <pre class="r"><code>bj &lt;- get_timeline(&quot;BorisJohnson&quot;,  n=3200)
 aoc &lt;- get_timeline(&quot;aoc&quot;, n=3200)</code></pre>
 <pre class="r"><code>library(dplyr)

@@ -1,9 +1,11 @@
 ---
 title: "Predictive Algorithm"
-subtitle: "Homework 09"
 author: "Jenifer M. Nemoda"
 date: "04/29/2021"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
+subtitle: Homework 09
 ---
 
 ```{r setup, include=FALSE}
@@ -98,7 +100,8 @@ tfidf_svc_score = metrics.accuracy_score(y_test, tfidf_svc_pred)
 print("LinearSVC Score:   %0.3f" % tfidf_svc_score)
 
 svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=['BorisJohnson', 'AOC'])
-plot_confusion_matrix(svc_cm, classes=['BorisJohnson', 'AOC'], title="TF-IDF LinearSVC Confusion Matrix")
+matrix = plot_confusion_matrix(svc_cm, classes=['BorisJohnson', 'AOC'], title="TF-IDF LinearSVC Confusion Matrix")
+pprint(matrix)
 ```
 
 

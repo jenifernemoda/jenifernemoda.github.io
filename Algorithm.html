@@ -18,12 +18,12 @@
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">
@@ -115,33 +115,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 45px;
+  padding-top: 51px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h2 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h3 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h4 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h5 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h6 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .dropdown-submenu {
   position: relative;
@@ -389,32 +389,34 @@ tfidf_svc_score = metrics.accuracy_score(y_test, tfidf_svc_pred)
 print(&quot;LinearSVC Score:   %0.3f&quot; % tfidf_svc_score)</code></pre>
 <pre><code>## LinearSVC Score:   0.689</code></pre>
 <pre class="python"><code>svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
-plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
+matrix = plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
+<pre class="python"><code>pprint(matrix)</code></pre>
+<pre><code>## None</code></pre>
 <pre class="python"><code>from helper_functions import plot_and_return_top_features
 from pprint import pprint
 
 top_features = plot_and_return_top_features(tfidf_svc, tfidf_vectorizer)</code></pre>
 <p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-1.png" width="1440" /></p>
 <pre class="python"><code>pprint(top_features)</code></pre>
-<pre><code>## [(-1.5608613627720465, &#39;amp&#39;),
-##  (-1.4735159957767632, &#39;just&#39;),
-##  (-0.3118951002560412, &#39;need&#39;),
-##  (-0.053075253772101094, &#39;thank&#39;),
-##  (-0.021123950439888305, &#39;work&#39;),
-##  (-0.016296429930511412, &#39;covid&#39;),
-##  (0.04556852736262523, &#39;ve&#39;),
-##  (0.11561585764783743, &#39;people&#39;),
-##  (0.12439334005602841, &#39;new&#39;),
-##  (0.3927788140240218, &#39;make&#39;),
-##  (0.5396618437350293, &#39;https&#39;),
-##  (0.6793001784929434, &#39;country&#39;),
-##  (0.7165039432312735, &#39;million&#39;),
-##  (0.8990610409992191, &#39;today&#39;),
-##  (1.0701228990637022, &#39;vaccine&#39;),
-##  (1.3567488016820466, &#39;uk&#39;),
-##  (1.4169969327306682, &#39;jab&#39;),
-##  (1.5002665117758869, &#39;great&#39;)]</code></pre>
+<pre><code>## [(-1.5608605212793838, &#39;amp&#39;),
+##  (-1.4735194656204724, &#39;just&#39;),
+##  (-0.3119017240821415, &#39;need&#39;),
+##  (-0.05306392325638111, &#39;thank&#39;),
+##  (-0.021125056719085707, &#39;work&#39;),
+##  (-0.016292607442387034, &#39;covid&#39;),
+##  (0.045570395841657736, &#39;ve&#39;),
+##  (0.11562435275913928, &#39;people&#39;),
+##  (0.12440142983788319, &#39;new&#39;),
+##  (0.39278584840772424, &#39;make&#39;),
+##  (0.5396601133590836, &#39;https&#39;),
+##  (0.6793002227503144, &#39;country&#39;),
+##  (0.716503686839681, &#39;million&#39;),
+##  (0.8990576131371751, &#39;today&#39;),
+##  (1.0701307638566753, &#39;vaccine&#39;),
+##  (1.3567516704898634, &#39;uk&#39;),
+##  (1.4169963191995267, &#39;jab&#39;),
+##  (1.5002650755013829, &#39;great&#39;)]</code></pre>
 <pre class="python"><code>bj_tweet = &quot;Herd immunity will save us&quot; 
 aoc_tweet = &quot;AstraZeneca sucks&quot; 
 
