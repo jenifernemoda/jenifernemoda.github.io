@@ -376,9 +376,9 @@ print(&#39;NaiveBayes Tfidf Score: &#39;, tfidf_nb_score)</code></pre>
 tfidf_nb_cm = metrics.confusion_matrix(y_test, tfidf_nb_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
 count_nb_cm = metrics.confusion_matrix(y_test, count_nb_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
 
-plot_1 = plot_confusion_matrix(tfidf_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF NB Confusion Matrix&quot;)</code></pre>
+plot_confusion_matrix(tfidf_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF NB Confusion Matrix&quot;)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
-<pre class="python"><code>plot_2 = plot_confusion_matrix(count_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;Count NB Confusion Matrix&quot;, figure=1)</code></pre>
+<pre class="python"><code>plot_confusion_matrix(count_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;Count NB Confusion Matrix&quot;, figure=1)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
 <pre class="python"><code>tfidf_svc = LinearSVC()
 tfidf_svc.fit(tfidf_train, y_train)</code></pre>
@@ -389,7 +389,7 @@ tfidf_svc_score = metrics.accuracy_score(y_test, tfidf_svc_pred)
 print(&quot;LinearSVC Score:   %0.3f&quot; % tfidf_svc_score)</code></pre>
 <pre><code>## LinearSVC Score:   0.689</code></pre>
 <pre class="python"><code>svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
-plot_3 = plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
+plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
 <pre class="python"><code>from helper_functions import plot_and_return_top_features
 from pprint import pprint
@@ -397,24 +397,24 @@ from pprint import pprint
 top_features = plot_and_return_top_features(tfidf_svc, tfidf_vectorizer)</code></pre>
 <p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-1.png" width="1440" /></p>
 <pre class="python"><code>pprint(top_features)</code></pre>
-<pre><code>## [(-1.5608600699668638, &#39;amp&#39;),
-##  (-1.4735127115604527, &#39;just&#39;),
-##  (-0.31189920387563, &#39;need&#39;),
-##  (-0.05306355207711965, &#39;thank&#39;),
-##  (-0.021132443124156505, &#39;work&#39;),
-##  (-0.016289778838484877, &#39;covid&#39;),
-##  (0.045572408017541664, &#39;ve&#39;),
-##  (0.11561914546963538, &#39;people&#39;),
-##  (0.12439071943340646, &#39;new&#39;),
-##  (0.3927766795258272, &#39;make&#39;),
-##  (0.5396499380864919, &#39;https&#39;),
-##  (0.6792996137915543, &#39;country&#39;),
-##  (0.7165093809378172, &#39;million&#39;),
-##  (0.8990615766952018, &#39;today&#39;),
-##  (1.0701274714130355, &#39;vaccine&#39;),
-##  (1.3567504660391363, &#39;uk&#39;),
-##  (1.4169996375143648, &#39;jab&#39;),
-##  (1.5002671321798913, &#39;great&#39;)]</code></pre>
+<pre><code>## [(-1.5608601033850977, &#39;amp&#39;),
+##  (-1.4735199524025397, &#39;just&#39;),
+##  (-0.3118975695627486, &#39;need&#39;),
+##  (-0.05306706994539528, &#39;thank&#39;),
+##  (-0.0211281312611463, &#39;work&#39;),
+##  (-0.016298705664290182, &#39;covid&#39;),
+##  (0.045571258862047444, &#39;ve&#39;),
+##  (0.11560944172750712, &#39;people&#39;),
+##  (0.12439134818114386, &#39;new&#39;),
+##  (0.3927791497061763, &#39;make&#39;),
+##  (0.5396586775215977, &#39;https&#39;),
+##  (0.6793056985465422, &#39;country&#39;),
+##  (0.7165096123102739, &#39;million&#39;),
+##  (0.8990568920305065, &#39;today&#39;),
+##  (1.0701279870086962, &#39;vaccine&#39;),
+##  (1.3567525456616405, &#39;uk&#39;),
+##  (1.4169992236674138, &#39;jab&#39;),
+##  (1.5002630655296543, &#39;great&#39;)]</code></pre>
 <pre class="python"><code>bj_tweet = &quot;Herd immunity will save us&quot; 
 aoc_tweet = &quot;AstraZeneca sucks&quot; 
 
