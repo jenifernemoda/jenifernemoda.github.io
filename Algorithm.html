@@ -371,17 +371,21 @@ print(&#39;NaiveBayes Tfidf Score: &#39;, tfidf_nb_score)</code></pre>
 <pre class="python"><code>print(&#39;NaiveBayes Count Score: &#39;, count_nb_score)</code></pre>
 <pre><code>## NaiveBayes Count Score:  0.6893939393939394</code></pre>
 <pre class="python"><code>from helper_functions import plot_confusion_matrix
+import matplotlib.pyplot as plt
 
 
 tfidf_nb_cm = metrics.confusion_matrix(y_test, tfidf_nb_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
 count_nb_cm = metrics.confusion_matrix(y_test, count_nb_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
 
-plot_confusion_matrix(tfidf_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF NB Confusion Matrix&quot;)</code></pre>
+matrix_1 = plot_confusion_matrix(tfidf_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF NB Confusion Matrix&quot;)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
-<pre class="python"><code>plot_confusion_matrix(count_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;Count NB Confusion Matrix&quot;, figure=1)</code></pre>
+<pre class="python"><code>plt.show(matrix_1)</code></pre>
+<p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="python"><code>matrix_2 = plot_confusion_matrix(count_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;Count NB Confusion Matrix&quot;, figure=1)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
-<pre class="python"><code>import matplotlib.pyplot as plt
-tfidf_svc = LinearSVC()
+<pre class="python"><code>plt.show(matrix_2)</code></pre>
+<p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<pre class="python"><code>tfidf_svc = LinearSVC()
 tfidf_svc.fit(tfidf_train, y_train)</code></pre>
 <pre><code>## LinearSVC()</code></pre>
 <pre class="python"><code>tfidf_svc_pred = tfidf_svc.predict(tfidf_test)
@@ -390,38 +394,40 @@ tfidf_svc_score = metrics.accuracy_score(y_test, tfidf_svc_pred)
 print(&quot;LinearSVC Score:   %0.3f&quot; % tfidf_svc_score)</code></pre>
 <pre><code>## LinearSVC Score:   0.750</code></pre>
 <pre class="python"><code>svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
-cm = plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
+matrix_3 = plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
-<pre class="python"><code>plt.show(cm)</code></pre>
-<p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="python"><code>plt.show(matrix_3)</code></pre>
+<p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-5.png" width="672" /></p>
 <pre class="python"><code>from helper_functions import plot_and_return_top_features
 from pprint import pprint
 
 top_features = plot_and_return_top_features(tfidf_svc, tfidf_vectorizer)</code></pre>
-<p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-3.png" width="1440" /></p>
+<pre><code>## /Users/jenifernemoda/Desktop/516/W12/helper_functions.py:61: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+##   plt.figure(figsize=(15, 5))</code></pre>
+<p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-7.png" width="1440" /></p>
 <pre class="python"><code>pprint(top_features)</code></pre>
-<pre><code>## [(-1.3261635151424929, &#39;just&#39;),
-##  (-1.1842214656843348, &#39;amp&#39;),
-##  (-0.5049787676483081, &#39;need&#39;),
-##  (-0.39570956924148126, &#39;covid&#39;),
-##  (-0.210357506557556, &#39;like&#39;),
-##  (-0.17794699475556255, &#39;thank&#39;),
-##  (-0.03703892194468149, &#39;work&#39;),
-##  (-0.034660646112800515, &#39;working&#39;),
-##  (0.03346647198094908, &#39;time&#39;),
-##  (0.15222122870679552, &#39;new&#39;),
-##  (0.17717770051400467, &#39;people&#39;),
-##  (0.3252525048214552, &#39;make&#39;),
-##  (0.3283998856223707, &#39;ve&#39;),
-##  (0.34376238774509843, &#39;million&#39;),
-##  (0.4312098436799979, &#39;lives&#39;),
-##  (0.49825437681400314, &#39;https&#39;),
-##  (0.7844369750076912, &#39;today&#39;),
-##  (0.8132147616686886, &#39;country&#39;),
-##  (1.0722377262901808, &#39;vaccine&#39;),
-##  (1.3255199743113402, &#39;jab&#39;),
-##  (1.4009920069997603, &#39;pandemic&#39;),
-##  (1.589866292063033, &#39;uk&#39;)]</code></pre>
+<pre><code>## [(-1.3261653752285274, &#39;just&#39;),
+##  (-1.1842313741064712, &#39;amp&#39;),
+##  (-0.5049668314953392, &#39;need&#39;),
+##  (-0.39571000358434955, &#39;covid&#39;),
+##  (-0.21036059035231094, &#39;like&#39;),
+##  (-0.1779527634014168, &#39;thank&#39;),
+##  (-0.03704444700964088, &#39;work&#39;),
+##  (-0.034657747000724604, &#39;working&#39;),
+##  (0.03346561693043752, &#39;time&#39;),
+##  (0.15223231133736462, &#39;new&#39;),
+##  (0.17718439602845418, &#39;people&#39;),
+##  (0.32526190709308705, &#39;make&#39;),
+##  (0.3283848538452529, &#39;ve&#39;),
+##  (0.34376587280396076, &#39;million&#39;),
+##  (0.43121270259371547, &#39;lives&#39;),
+##  (0.49825348722343754, &#39;https&#39;),
+##  (0.7844258152874619, &#39;today&#39;),
+##  (0.8132175501475164, &#39;country&#39;),
+##  (1.072240687323038, &#39;vaccine&#39;),
+##  (1.325525815410184, &#39;jab&#39;),
+##  (1.4009878940852665, &#39;pandemic&#39;),
+##  (1.5898730931022218, &#39;uk&#39;)]</code></pre>
 <pre class="python"><code>bj_tweet = &quot;I would like to send my warm wishes to Her Majesty The Queen on her 95th birthday.&quot; 
 aoc_tweet = &quot;That a family had to lose a son, brother and father; that a teenage girl had to film and post a murder, that millions across the country had to organize and march just for George Floyd to be seen and valued is not justice.&quot; 
 
