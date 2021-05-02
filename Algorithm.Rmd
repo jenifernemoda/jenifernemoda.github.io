@@ -92,6 +92,7 @@ plot_confusion_matrix(count_nb_cm, classes=['BorisJohnson', 'AOC'], title="Count
 
 
 ```{python}
+import matplotlib.pyplot as plt
 tfidf_svc = LinearSVC()
 tfidf_svc.fit(tfidf_train, y_train)
 tfidf_svc_pred = tfidf_svc.predict(tfidf_test)
@@ -101,7 +102,7 @@ print("LinearSVC Score:   %0.3f" % tfidf_svc_score)
 
 svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=['BorisJohnson', 'AOC'])
 plot_confusion_matrix(svc_cm, classes=['BorisJohnson', 'AOC'], title="TF-IDF LinearSVC Confusion Matrix")
-plt.show()
+plt.show
 ```
 
 

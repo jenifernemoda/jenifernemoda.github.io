@@ -380,7 +380,8 @@ plot_confusion_matrix(tfidf_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39
 <pre><code>## Confusion matrix, without normalization</code></pre>
 <pre class="python"><code>plot_confusion_matrix(count_nb_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;Count NB Confusion Matrix&quot;, figure=1)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
-<pre class="python"><code>tfidf_svc = LinearSVC()
+<pre class="python"><code>import matplotlib.pyplot as plt
+tfidf_svc = LinearSVC()
 tfidf_svc.fit(tfidf_train, y_train)</code></pre>
 <pre><code>## LinearSVC()</code></pre>
 <pre class="python"><code>tfidf_svc_pred = tfidf_svc.predict(tfidf_test)
@@ -391,34 +392,36 @@ print(&quot;LinearSVC Score:   %0.3f&quot; % tfidf_svc_score)</code></pre>
 <pre class="python"><code>svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
 plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
+<pre class="python"><code>plt.show</code></pre>
+<pre><code>## &lt;function make_python_function.&lt;locals&gt;.python_function at 0x7fc3fcf3bd90&gt;</code></pre>
 <pre class="python"><code>from helper_functions import plot_and_return_top_features
 from pprint import pprint
 
 top_features = plot_and_return_top_features(tfidf_svc, tfidf_vectorizer)</code></pre>
 <p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-1.png" width="1440" /></p>
 <pre class="python"><code>pprint(top_features)</code></pre>
-<pre><code>## [(-1.326163793730081, &#39;just&#39;),
-##  (-1.1842281740682206, &#39;amp&#39;),
-##  (-0.5049657505040971, &#39;need&#39;),
-##  (-0.39570713899075916, &#39;covid&#39;),
-##  (-0.21035932863270254, &#39;like&#39;),
-##  (-0.177953215553675, &#39;thank&#39;),
-##  (-0.03703735420069904, &#39;work&#39;),
-##  (-0.03466057954735072, &#39;working&#39;),
-##  (0.033463960005693585, &#39;time&#39;),
-##  (0.15221770242108357, &#39;new&#39;),
-##  (0.17718717366869768, &#39;people&#39;),
-##  (0.3252552736473342, &#39;make&#39;),
-##  (0.32838953136630733, &#39;ve&#39;),
-##  (0.3437594953824568, &#39;million&#39;),
-##  (0.43121373393473167, &#39;lives&#39;),
-##  (0.49826446773701016, &#39;https&#39;),
-##  (0.7844354373995239, &#39;today&#39;),
-##  (0.8132177435751928, &#39;country&#39;),
-##  (1.0722364106055033, &#39;vaccine&#39;),
-##  (1.3255210818068222, &#39;jab&#39;),
-##  (1.4009952915065687, &#39;pandemic&#39;),
-##  (1.589872768005634, &#39;uk&#39;)]</code></pre>
+<pre><code>## [(-1.3261595462551599, &#39;just&#39;),
+##  (-1.1842336952559875, &#39;amp&#39;),
+##  (-0.5049598550693761, &#39;need&#39;),
+##  (-0.3957114184661027, &#39;covid&#39;),
+##  (-0.21036199205806574, &#39;like&#39;),
+##  (-0.17795522589762938, &#39;thank&#39;),
+##  (-0.037046652228112854, &#39;work&#39;),
+##  (-0.03465767136722294, &#39;working&#39;),
+##  (0.03346564316916413, &#39;time&#39;),
+##  (0.15222096620381198, &#39;new&#39;),
+##  (0.17718145758408893, &#39;people&#39;),
+##  (0.3252556607204393, &#39;make&#39;),
+##  (0.32839616838977065, &#39;ve&#39;),
+##  (0.34375970321081534, &#39;million&#39;),
+##  (0.4312143273591242, &#39;lives&#39;),
+##  (0.49826065815744736, &#39;https&#39;),
+##  (0.7844328643343473, &#39;today&#39;),
+##  (0.8132128507940566, &#39;country&#39;),
+##  (1.0722329703752933, &#39;vaccine&#39;),
+##  (1.3255200278892985, &#39;jab&#39;),
+##  (1.400993095644314, &#39;pandemic&#39;),
+##  (1.5898666079567467, &#39;uk&#39;)]</code></pre>
 <pre class="python"><code>bj_tweet = &quot;I would like to send my warm wishes to Her Majesty The Queen on her 95th birthday.&quot; 
 aoc_tweet = &quot;That a family had to lose a son, brother and father; that a teenage girl had to film and post a murder, that millions across the country had to organize and march just for George Floyd to be seen and valued is not justice.&quot; 
 
