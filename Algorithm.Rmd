@@ -100,8 +100,7 @@ tfidf_svc_score = metrics.accuracy_score(y_test, tfidf_svc_pred)
 print("LinearSVC Score:   %0.3f" % tfidf_svc_score)
 
 svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=['BorisJohnson', 'AOC'])
-matrix = plot_confusion_matrix(svc_cm, classes=['BorisJohnson', 'AOC'], title="TF-IDF LinearSVC Confusion Matrix")
-pprint(matrix)
+plot_confusion_matrix(svc_cm, classes=['BorisJohnson', 'AOC'], title="TF-IDF LinearSVC Confusion Matrix")
 ```
 
 
@@ -115,8 +114,8 @@ pprint(top_features)
 
 
 ```{python}
-bj_tweet = "Herd immunity will save us" 
-aoc_tweet = "AstraZeneca sucks" 
+bj_tweet = "I would like to send my warm wishes to Her Majesty The Queen on her 95th birthday." 
+aoc_tweet = "That a family had to lose a son, brother and father; that a teenage girl had to film and post a murder, that millions across the country had to organize and march just for George Floyd to be seen and valued is not justice." 
 
 bj_tweet_vectorized = tfidf_vectorizer.transform([bj_tweet])
 aoc_tweet_vectorized = tfidf_vectorizer.transform([aoc_tweet])
@@ -128,18 +127,87 @@ print("Predicted Boris Johnson tweet", bj_tweet_pred)
 print("Predicted AOC tweet", aoc_tweet_pred)
 
 
-#BJ Tweets
-#The UK is a great country
-#The Duke lives in our hearts 
-#Everyone is eligible for a vaccine
+#Tweets for Manual Test
 
-#AOC Tweets
-#Climate Change is an issue 
-#God save the Queen
-#Gender gap is real
-#Happy Mothers day
-#Happy Fathers day
-#Pfizer is the best
-#Minimum wage is a priority
-#AstraZeneca is safe
+#This is the story of the UK vaccine rollout which has already saved thousands of lives.
+#Tweeted by: BJ
+#Predicted: BJ
+
+#The world’s tropical forests are the lungs of our planet and yet we’re losing these great, teeming ecosystems at an unconscionable rate. I’m pleased the UK is joining this hugely exciting coalition to protect our tropical forests and tackle climate change.
+#Tweeted by: BJ
+#Predicted: BJ
+
+#We can build back better from this pandemic by building back greener.
+#Tweeted by: BJ
+#Predicted: BJ
+
+#In supporting #StephenLawrenceDay we are reminded of Stephen's many talents, and our duty to stop racism and give young people the best possible future.My thoughts are with Stephen’s parents Doreen and Neville, and the many families that have lost loved ones in their prime.
+#Tweeted by: BJ
+#Predicted: AOC
+#!! Error
+
+#I would like to send my warm wishes to Her Majesty The Queen on her 95th birthday.
+#Tweeted by: BJ
+#Predicted: AOC
+#!! Error
+
+#Last January I was sworn in for my first term in Congress.
+#Tweeted by: AOC
+#Predicted: AOC
+
+#Yes! And as we continue the fight for #MedicareForAll nationally, did you know that progressives established a key step for M4A here at home & across NYC?
+#Tweeted by: AOC
+#Predicted: AOC
+
+#I’m glad you like it @chelliepingree! Happy Earth Day Earth globe americas 
+#Tweeted by: AOC
+#Predicted: AOC
+
+#That a family had to lose a son, brother and father; that a teenage girl had to film and post a murder, that millions across the country had to organize and march just for George Floyd to be seen and valued is not justice.
+#Tweeted by: AOC
+#Predicted: AOC
+
+#I welcome the Court of Appeal's decision to overturn the convictions of 39 former sub-postmasters in the Horizon dispute, an appalling injustice which has had a devastating impact on these families for years.
+#Tweeted by: AOC
+#Predicted: BJ
+#!! Error
 ```
+
+
+```{python}
+#Unrelated users test
+
+test_tweet = "Buckingham Palace have released a new picture of Queen Elizabeth in celebration of her 95th birthday." 
+
+test_tweet_vectorized = tfidf_vectorizer.transform([test_tweet])
+
+test_tweet_pred = tfidf_svc.predict(test_tweet_vectorized)
+
+print("Predicted test tweet", test_tweet_pred)
+
+#Tweet for unrelated users manual test:
+
+#Get vaccinated, folks.
+#Tweeted by: President Biden
+#Predicted: AOC
+
+#Your answer to the dreaded low battery. #GalaxyS21 5G intuitively manages your usage so you never miss a moment.
+#Tweeted by: Samsung Mobile US
+#Predicted: AOC
+
+#Am hosting SNL on May 8
+#Tweeted by: Elon Musk
+#Predicted: AOC
+
+#It’s the Championship - all or nothing. Choose your team before the games start.
+#Tweeted by: Wendy's
+#Predicted: AOC
+
+#Buckingham Palace have released a new picture of Queen Elizabeth in celebration of her 95th birthday.
+#Tweeted by: The Telegraph
+#Predicted: AOC
+```
+
+
+
+

@@ -367,9 +367,9 @@ count_nb.fit(count_train, y_train)</code></pre>
 count_nb_score = metrics.accuracy_score(y_test, count_nb_pred)
 
 print(&#39;NaiveBayes Tfidf Score: &#39;, tfidf_nb_score)</code></pre>
-<pre><code>## NaiveBayes Tfidf Score:  0.5909090909090909</code></pre>
+<pre><code>## NaiveBayes Tfidf Score:  0.6893939393939394</code></pre>
 <pre class="python"><code>print(&#39;NaiveBayes Count Score: &#39;, count_nb_score)</code></pre>
-<pre><code>## NaiveBayes Count Score:  0.6136363636363636</code></pre>
+<pre><code>## NaiveBayes Count Score:  0.6893939393939394</code></pre>
 <pre class="python"><code>from helper_functions import plot_confusion_matrix
 
 
@@ -387,38 +387,40 @@ tfidf_svc.fit(tfidf_train, y_train)</code></pre>
 tfidf_svc_score = metrics.accuracy_score(y_test, tfidf_svc_pred)
 
 print(&quot;LinearSVC Score:   %0.3f&quot; % tfidf_svc_score)</code></pre>
-<pre><code>## LinearSVC Score:   0.689</code></pre>
+<pre><code>## LinearSVC Score:   0.750</code></pre>
 <pre class="python"><code>svc_cm = metrics.confusion_matrix(y_test, tfidf_svc_pred, labels=[&#39;BorisJohnson&#39;, &#39;AOC&#39;])
-matrix = plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
+plot_confusion_matrix(svc_cm, classes=[&#39;BorisJohnson&#39;, &#39;AOC&#39;], title=&quot;TF-IDF LinearSVC Confusion Matrix&quot;)</code></pre>
 <pre><code>## Confusion matrix, without normalization</code></pre>
-<pre class="python"><code>pprint(matrix)</code></pre>
-<pre><code>## None</code></pre>
 <pre class="python"><code>from helper_functions import plot_and_return_top_features
 from pprint import pprint
 
 top_features = plot_and_return_top_features(tfidf_svc, tfidf_vectorizer)</code></pre>
 <p><img src="Predictive-algorithm_files/figure-html/unnamed-chunk-2-1.png" width="1440" /></p>
 <pre class="python"><code>pprint(top_features)</code></pre>
-<pre><code>## [(-1.5608605212793838, &#39;amp&#39;),
-##  (-1.4735194656204724, &#39;just&#39;),
-##  (-0.3119017240821415, &#39;need&#39;),
-##  (-0.05306392325638111, &#39;thank&#39;),
-##  (-0.021125056719085707, &#39;work&#39;),
-##  (-0.016292607442387034, &#39;covid&#39;),
-##  (0.045570395841657736, &#39;ve&#39;),
-##  (0.11562435275913928, &#39;people&#39;),
-##  (0.12440142983788319, &#39;new&#39;),
-##  (0.39278584840772424, &#39;make&#39;),
-##  (0.5396601133590836, &#39;https&#39;),
-##  (0.6793002227503144, &#39;country&#39;),
-##  (0.716503686839681, &#39;million&#39;),
-##  (0.8990576131371751, &#39;today&#39;),
-##  (1.0701307638566753, &#39;vaccine&#39;),
-##  (1.3567516704898634, &#39;uk&#39;),
-##  (1.4169963191995267, &#39;jab&#39;),
-##  (1.5002650755013829, &#39;great&#39;)]</code></pre>
-<pre class="python"><code>bj_tweet = &quot;Herd immunity will save us&quot; 
-aoc_tweet = &quot;AstraZeneca sucks&quot; 
+<pre><code>## [(-1.326163793730081, &#39;just&#39;),
+##  (-1.1842281740682206, &#39;amp&#39;),
+##  (-0.5049657505040971, &#39;need&#39;),
+##  (-0.39570713899075916, &#39;covid&#39;),
+##  (-0.21035932863270254, &#39;like&#39;),
+##  (-0.177953215553675, &#39;thank&#39;),
+##  (-0.03703735420069904, &#39;work&#39;),
+##  (-0.03466057954735072, &#39;working&#39;),
+##  (0.033463960005693585, &#39;time&#39;),
+##  (0.15221770242108357, &#39;new&#39;),
+##  (0.17718717366869768, &#39;people&#39;),
+##  (0.3252552736473342, &#39;make&#39;),
+##  (0.32838953136630733, &#39;ve&#39;),
+##  (0.3437594953824568, &#39;million&#39;),
+##  (0.43121373393473167, &#39;lives&#39;),
+##  (0.49826446773701016, &#39;https&#39;),
+##  (0.7844354373995239, &#39;today&#39;),
+##  (0.8132177435751928, &#39;country&#39;),
+##  (1.0722364106055033, &#39;vaccine&#39;),
+##  (1.3255210818068222, &#39;jab&#39;),
+##  (1.4009952915065687, &#39;pandemic&#39;),
+##  (1.589872768005634, &#39;uk&#39;)]</code></pre>
+<pre class="python"><code>bj_tweet = &quot;I would like to send my warm wishes to Her Majesty The Queen on her 95th birthday.&quot; 
+aoc_tweet = &quot;That a family had to lose a son, brother and father; that a teenage girl had to film and post a murder, that millions across the country had to organize and march just for George Floyd to be seen and valued is not justice.&quot; 
 
 bj_tweet_vectorized = tfidf_vectorizer.transform([bj_tweet])
 aoc_tweet_vectorized = tfidf_vectorizer.transform([aoc_tweet])
@@ -431,21 +433,83 @@ print(&quot;Predicted Boris Johnson tweet&quot;, bj_tweet_pred)</code></pre>
 <pre class="python"><code>print(&quot;Predicted AOC tweet&quot;, aoc_tweet_pred)
 
 
-#BJ Tweets
-#The UK is a great country
-#The Duke lives in our hearts 
-#Everyone is eligible for a vaccine
+#Tweets for Manual Test
 
-#AOC Tweets
-#Climate Change is an issue 
-#God save the Queen
-#Gender gap is real
-#Happy Mothers day
-#Happy Fathers day
-#Pfizer is the best
-#Minimum wage is a priority
-#AstraZeneca is safe</code></pre>
+#This is the story of the UK vaccine rollout which has already saved thousands of lives.
+#Tweeted by: BJ
+#Predicted: BJ
+
+#The world’s tropical forests are the lungs of our planet and yet we’re losing these great, teeming ecosystems at an unconscionable rate. I’m pleased the UK is joining this hugely exciting coalition to protect our tropical forests and tackle climate change.
+#Tweeted by: BJ
+#Predicted: BJ
+
+#We can build back better from this pandemic by building back greener.
+#Tweeted by: BJ
+#Predicted: BJ
+
+#In supporting #StephenLawrenceDay we are reminded of Stephen&#39;s many talents, and our duty to stop racism and give young people the best possible future.My thoughts are with Stephen’s parents Doreen and Neville, and the many families that have lost loved ones in their prime.
+#Tweeted by: BJ
+#Predicted: AOC
+#!! Error
+
+#I would like to send my warm wishes to Her Majesty The Queen on her 95th birthday.
+#Tweeted by: BJ
+#Predicted: AOC
+#!! Error
+
+#Last January I was sworn in for my first term in Congress.
+#Tweeted by: AOC
+#Predicted: AOC
+
+#Yes! And as we continue the fight for #MedicareForAll nationally, did you know that progressives established a key step for M4A here at home &amp; across NYC?
+#Tweeted by: AOC
+#Predicted: AOC
+
+#I’m glad you like it @chelliepingree! Happy Earth Day Earth globe americas 
+#Tweeted by: AOC
+#Predicted: AOC
+
+#That a family had to lose a son, brother and father; that a teenage girl had to film and post a murder, that millions across the country had to organize and march just for George Floyd to be seen and valued is not justice.
+#Tweeted by: AOC
+#Predicted: AOC
+
+#I welcome the Court of Appeal&#39;s decision to overturn the convictions of 39 former sub-postmasters in the Horizon dispute, an appalling injustice which has had a devastating impact on these families for years.
+#Tweeted by: AOC
+#Predicted: BJ
+#!! Error</code></pre>
 <pre><code>## Predicted AOC tweet [&#39;AOC&#39;]</code></pre>
+<pre class="python"><code>#Unrelated users test
+
+test_tweet = &quot;Buckingham Palace have released a new picture of Queen Elizabeth in celebration of her 95th birthday.&quot; 
+
+test_tweet_vectorized = tfidf_vectorizer.transform([test_tweet])
+
+test_tweet_pred = tfidf_svc.predict(test_tweet_vectorized)
+
+print(&quot;Predicted test tweet&quot;, test_tweet_pred)
+
+#Tweet for unrelated users manual test:
+
+#Get vaccinated, folks.
+#Tweeted by: President Biden
+#Predicted: AOC
+
+#Your answer to the dreaded low battery. #GalaxyS21 5G intuitively manages your usage so you never miss a moment.
+#Tweeted by: Samsung Mobile US
+#Predicted: AOC
+
+#Am hosting SNL on May 8
+#Tweeted by: Elon Musk
+#Predicted: AOC
+
+#It’s the Championship - all or nothing. Choose your team before the games start.
+#Tweeted by: Wendy&#39;s
+#Predicted: AOC
+
+#Buckingham Palace have released a new picture of Queen Elizabeth in celebration of her 95th birthday.
+#Tweeted by: The Telegraph
+#Predicted: AOC</code></pre>
+<pre><code>## Predicted test tweet [&#39;AOC&#39;]</code></pre>
 
 
 
