@@ -10,9 +10,9 @@ navbar:
     - text: "Findings"
       href: Findings.html
     - text: "Twitter data cleaning"
-      href: Twitter data cleaning.html
+      href: Twitter_data_cleaning.html
     - text: "Predictive Algorithm"
-      href: Predictive algorithm.html
+      href: Predictive_algorithm.html
       
 output:
   html_document:
