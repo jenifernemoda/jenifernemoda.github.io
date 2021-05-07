@@ -28,4 +28,31 @@ output:
 
 ## Homework 10
 
-To be added...
+#### *Two main steps taken to develop the predictive algorithm: (i) a first step in R to get twitter data from our selected users (Boris Johnson and AOC) and (ii) a second step in Python to create the predictive algorithm.*
+
+\ \
+*(i) Downloading Twitter data in R*
+
+* First, we download 3,200 tweets by Boris Johnson and AOC respectively. 
+* Second, we then exclude retweets, keep only the variables that we are interested in using to develop our predictive algorithm and select a sample of 200 tweets per user.
+* Third, We merge these two clean datasets into one in order to create an input file that can be used as an input for our algorithm (see ii). 
+
+\ \
+*Additional methodological notes on step (i)*
+
+* **Excluding retweets:** we decided to exclude retweets since these are statements made by third parties that are only re-posted by our users. We wanted to base our predictive algorithm solely on tweets directly posted by our users instead.
+* **Excluding non-relevant variables:** our analysis is based solely on the text of the tweets. Thus, we remove all other variables that are included in datasets downloaded from Twitter. 
+* **Selecting a sample of 200 users:** we selected a sample of 200 tweets to ensure the proper functioning of our Python algorithm. 
+
+\ \
+
+###### *The output from this step is a .csv file including 400 tweets (200 tweets per selected user). As for the variables, the file includes "author" as the author of the tweet, namely Boris Johnson or AOC; "status" as the text of the tweet itself; and "id" as the counting of the rows.*
+
+\ \
+*(ii) Creating Algorithm in Python*
+
+* We adapt a model used in class to develop an algorithm that allows us to predict whether the author of a given tweet was either Boris Johnson or AOC. 
+* The model takes our output from step (i) as an input. The code then splits the data into training and test data, and creates vectorized representations of the tweets that are subsequently used to train and test the model.
+* We then compute a few Confusion Matrices. This will allow us to assess our model later on (see findings). We also visualize the most used words within the analyzed tweets.
+* Finally, the last two chunks of code allow us not only to test manually whether a tweet belongs to Boris Johnson or Alexandria Ocasio-Cortez, but also to investigate what happens when we test tweets from unrelated users. 
+
