@@ -13,6 +13,8 @@ navbar:
       href: Data.html
     - text: "Algorithm"
       href: Algorithm.html
+    - text: "HW10"
+      href: HW10.html
       
 output:
   html_document:
